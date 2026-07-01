@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SNIP — Premium Links</title>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Using 'Outfit' to match the bold, rounded, modern typography in the inspiration image -->
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     :root {
       /* Palette inspired by the image: Minty background, Midnight Blue, Coral Accent */
       --bg-gradient: linear-gradient(135deg, #E0F2FE 0%, #CCFBF1 100%);
       --surface: #FFFFFF;
       --surface-alt: #F8FAFC;
-      
-      --midnight: #0B0B2A; /* Deep royal navy from the image */
+
+      --midnight: #0B0B2A;
+      /* Deep royal navy from the image */
       --midnight-hover: #1A1A40;
-      --coral: #FF5A5F; /* Vibrant accent color */
-      
+      --coral: #FF5A5F;
+      /* Vibrant accent color */
+
       --text-main: #0B0B2A;
       --text-muted: #94A3B8;
       --border-soft: #E2E8F0;
-      
+
       --shadow-float: 0 24px 48px -12px rgba(11, 11, 42, 0.15);
       --shadow-soft: 0 8px 24px -8px rgba(11, 11, 42, 0.08);
-      
+
       --font: 'Outfit', sans-serif;
       --radius-card: 24px;
       --radius-pill: 999px;
     }
-    
+
     body {
       background: var(--bg-gradient);
       color: var(--text-main);
@@ -58,13 +68,13 @@
       padding: 0.85rem 1.5rem;
       text-decoration: none;
     }
-    
+
     .btn-primary {
       background: var(--midnight);
       color: #FFF;
       box-shadow: 0 8px 16px rgba(11, 11, 42, 0.2);
     }
-    
+
     .btn-primary:hover {
       background: var(--midnight-hover);
       transform: translateY(-2px);
@@ -81,7 +91,7 @@
       border-color: var(--midnight);
       background: rgba(11, 11, 42, 0.02);
     }
-    
+
     .btn-danger {
       background: transparent;
       color: var(--coral);
@@ -89,6 +99,7 @@
       font-size: 0.85rem;
       font-weight: 600;
     }
+
     .btn-danger:hover {
       background: rgba(255, 90, 95, 0.1);
     }
@@ -106,11 +117,11 @@
       outline: none;
       transition: border-color 0.3s ease;
     }
-    
+
     .input-minimal:focus {
       border-bottom-color: var(--midnight);
     }
-    
+
     .input-minimal::placeholder {
       color: var(--text-muted);
       font-weight: 300;
@@ -123,7 +134,7 @@
       min-height: 100vh;
       padding: 2rem;
     }
-    
+
     .auth-container {
       display: flex;
       background: var(--surface);
@@ -134,7 +145,7 @@
       overflow: hidden;
       position: relative;
     }
-    
+
     .auth-visual {
       flex: 1;
       background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
@@ -148,27 +159,44 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     /* Abstract decorative shapes for visual side */
     .auth-visual::before {
       content: '';
       position: absolute;
-      width: 300px; height: 300px;
-      background: rgba(255,255,255,0.1);
+      width: 300px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 50%;
-      top: -50px; right: -50px;
+      top: -50px;
+      right: -50px;
     }
+
     .auth-visual::after {
       content: '';
       position: absolute;
-      width: 200px; height: 200px;
-      background: rgba(255,255,255,0.1);
+      width: 200px;
+      height: 200px;
+      background: rgba(255, 255, 255, 0.1);
       border-radius: 50%;
-      bottom: -20px; left: -50px;
+      bottom: -20px;
+      left: -50px;
     }
-    
-    .auth-visual h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; position: relative; z-index: 10; }
-    .auth-visual p { font-size: 1.1rem; opacity: 0.9; position: relative; z-index: 10; }
+
+    .auth-visual h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .auth-visual p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      position: relative;
+      z-index: 10;
+    }
 
     .auth-form-box {
       flex: 1.2;
@@ -177,7 +205,7 @@
       display: flex;
       flex-direction: column;
     }
-    
+
     .auth-icon {
       width: 56px;
       height: 56px;
@@ -189,8 +217,12 @@
       margin-bottom: 1.5rem;
       color: var(--coral);
     }
-    
-    .auth-icon svg { width: 28px; height: 28px; fill: currentColor; }
+
+    .auth-icon svg {
+      width: 28px;
+      height: 28px;
+      fill: currentColor;
+    }
 
     .auth-form-box h1 {
       font-size: 2.25rem;
@@ -199,15 +231,18 @@
       margin-bottom: 0.5rem;
       letter-spacing: -0.02em;
     }
-    
+
     .auth-form-box p.subtitle {
       color: var(--text-muted);
       margin-bottom: 2.5rem;
       font-size: 0.95rem;
     }
 
-    .form-group { margin-bottom: 1.5rem; position: relative; }
-    
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
     .form-group label {
       display: block;
       font-size: 0.75rem;
@@ -228,8 +263,11 @@
       font-weight: 500;
       display: none;
     }
-    .auth-error.show { display: block; }
-    
+
+    .auth-error.show {
+      display: block;
+    }
+
     .forgot-pass {
       position: absolute;
       right: 0;
@@ -240,18 +278,37 @@
       text-decoration: none;
     }
 
-    .auth-actions { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
-    .auth-actions .btn { width: 100%; padding: 1rem; }
-    
-    .auth-google-icon { width: 20px; height: 20px; margin-right: 10px; }
-    
+    .auth-actions {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .auth-actions .btn {
+      width: 100%;
+      padding: 1rem;
+    }
+
+    .auth-google-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
     .auth-footer {
       margin-top: 2rem;
       text-align: center;
       font-size: 0.85rem;
       color: var(--text-muted);
     }
-    .auth-footer a { color: var(--midnight); font-weight: 700; text-decoration: none; cursor: pointer;}
+
+    .auth-footer a {
+      color: var(--midnight);
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
     .dashboard-header {
       background: rgba(255, 255, 255, 0.8);
@@ -263,9 +320,9 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      border-bottom: 1px solid rgba(255,255,255,0.5);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     }
-    
+
     .dash-logo {
       display: flex;
       align-items: center;
@@ -275,15 +332,28 @@
       color: var(--midnight);
       letter-spacing: -0.03em;
     }
-    .dash-logo .icon { color: var(--coral); display: flex; }
-    .dash-logo .icon svg { width: 24px; height: 24px; fill: currentColor;}
-    
+
+    .dash-logo .icon {
+      color: var(--coral);
+      display: flex;
+    }
+
+    .dash-logo .icon svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
     .dash-user {
       display: flex;
       align-items: center;
       gap: 1.5rem;
     }
-    .dash-user span { font-weight: 500; font-size: 0.95rem; }
+
+    .dash-user span {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
 
     main {
       max-width: 1200px;
@@ -298,7 +368,7 @@
       gap: 1.5rem;
       margin-bottom: 3rem;
     }
-    
+
     .stat-card {
       background: var(--surface);
       padding: 2rem;
@@ -310,7 +380,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .stat-card .icon-bg {
       position: absolute;
       right: -20px;
@@ -329,7 +399,7 @@
       color: var(--text-muted);
       z-index: 1;
     }
-    
+
     .stat-value {
       font-size: 2.75rem;
       font-weight: 700;
@@ -348,34 +418,39 @@
       margin-bottom: 3rem;
       position: relative;
     }
-    
+
     .creator-card::before {
       content: '';
       position: absolute;
-      top: 0; left: 0; right: 0; height: 6px;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
       background: linear-gradient(90deg, #4facfe, #00f2fe);
       border-radius: var(--radius-card) var(--radius-card) 0 0;
     }
-    
+
     .creator-header {
       margin-bottom: 2rem;
     }
+
     .creator-header h3 {
       font-size: 1.5rem;
       font-weight: 700;
       color: var(--midnight);
     }
-    
+
     .creator-inputs {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
       gap: 2rem;
       align-items: end;
     }
-    
+
     .creator-inputs .btn-primary {
-      height: 48px; /* Match input height roughly */
-      margin-bottom: 4px; 
+      height: 48px;
+      /* Match input height roughly */
+      margin-bottom: 4px;
     }
 
     /* Result Box */
@@ -389,8 +464,16 @@
       justify-content: space-between;
       border: 1px dashed var(--border-soft);
     }
-    .result-box.show { display: flex; }
-    .result-url { font-size: 1.25rem; font-weight: 600; color: var(--midnight); }
+
+    .result-box.show {
+      display: flex;
+    }
+
+    .result-url {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--midnight);
+    }
 
     .table-container {
       background: var(--surface);
@@ -398,7 +481,7 @@
       box-shadow: var(--shadow-soft);
       overflow: hidden;
     }
-    
+
     .table-header-row {
       display: flex;
       justify-content: space-between;
@@ -406,16 +489,16 @@
       padding: 2rem;
       border-bottom: 1px solid var(--border-soft);
     }
-    
+
     .table-header-row h3 {
       font-size: 1.25rem;
       font-weight: 700;
     }
-    
+
     .search-wrap {
       position: relative;
     }
-    
+
     .search-input {
       background: var(--surface-alt);
       border: none;
@@ -426,17 +509,23 @@
       width: 250px;
       outline: none;
     }
-    
+
     .search-wrap svg {
       position: absolute;
       left: 12px;
       top: 50%;
       transform: translateY(-50%);
-      width: 16px; height: 16px;
+      width: 16px;
+      height: 16px;
       fill: var(--text-muted);
     }
 
-    table { width: 100%; border-collapse: collapse; text-align: left; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
     th {
       padding: 1.25rem 2rem;
       font-size: 0.75rem;
@@ -446,15 +535,22 @@
       letter-spacing: 0.05em;
       background: var(--surface-alt);
     }
+
     td {
       padding: 1.5rem 2rem;
       border-bottom: 1px solid var(--border-soft);
       vertical-align: middle;
       font-size: 0.95rem;
     }
-    tr:last-child td { border-bottom: none; }
-    tr:hover td { background: rgba(248, 250, 252, 0.5); }
-    
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: rgba(248, 250, 252, 0.5);
+    }
+
     .link-alias {
       font-weight: 700;
       color: var(--midnight);
@@ -462,6 +558,7 @@
       display: block;
       margin-bottom: 0.25rem;
     }
+
     .link-original {
       font-size: 0.85rem;
       color: var(--text-muted);
@@ -471,7 +568,7 @@
       white-space: nowrap;
       display: block;
     }
-    
+
     .badge {
       display: inline-flex;
       align-items: center;
@@ -481,329 +578,399 @@
       font-weight: 600;
       letter-spacing: 0.02em;
     }
-    .badge-active { background: rgba(74, 222, 128, 0.15); color: #166534; }
-    .badge-expired { background: rgba(255, 90, 95, 0.1); color: var(--coral); }
-    
-    .clicks-val { font-weight: 700; font-size: 1.1rem; }
-    .date-val { color: var(--text-muted); font-size: 0.85rem; }
+
+    .badge-active {
+      background: rgba(74, 222, 128, 0.15);
+      color: #166534;
+    }
+
+    .badge-expired {
+      background: rgba(255, 90, 95, 0.1);
+      color: var(--coral);
+    }
+
+    .clicks-val {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .date-val {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
 
     /* Toast Notification */
     .toast {
-      position: fixed; bottom: 2rem; right: 2rem;
-      background: var(--midnight); color: #FFF;
-      padding: 1rem 1.5rem; border-radius: 12px;
-      font-weight: 500; font-size: 0.95rem;
-      box-shadow: 0 10px 30px rgba(11,11,42,0.2);
-      transform: translateY(100px); opacity: 0;
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--midnight);
+      color: #FFF;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      box-shadow: 0 10px 30px rgba(11, 11, 42, 0.2);
+      transform: translateY(100px);
+      opacity: 0;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 1000;
     }
-    .toast.show { transform: translateY(0); opacity: 1; }
-    
-    .hidden { display: none !important; }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .hidden {
+      display: none !important;
+    }
 
     /* Responsive */
     @media (max-width: 900px) {
-      .auth-container { flex-direction: column; max-width: 400px; }
-      .auth-visual { display: none; }
-      .auth-form-box { padding: 3rem 2rem; }
-      .creator-inputs { grid-template-columns: 1fr; gap: 1rem; }
-      .creator-inputs .btn-primary { margin-top: 1rem; }
-      th, td { padding: 1rem; }
-      .table-header-row { flex-direction: column; gap: 1rem; align-items: flex-start; }
-      .search-input { width: 100%; }
+      .auth-container {
+        flex-direction: column;
+        max-width: 400px;
+      }
+
+      .auth-visual {
+        display: none;
+      }
+
+      .auth-form-box {
+        padding: 3rem 2rem;
+      }
+
+      .creator-inputs {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .creator-inputs .btn-primary {
+        margin-top: 1rem;
+      }
+
+      th,
+      td {
+        padding: 1rem;
+      }
+
+      .table-header-row {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+
+      .search-input {
+        width: 100%;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<div class="auth-wrapper" id="auth-screen">
-  <div class="auth-container">
-    <div class="auth-visual">
-      <h2>Welcome to <br/>SNIP</h2>
-      <p>Shorten, manage, and track your links with elegance.</p>
-    </div>
-    
-    <div class="auth-form-box">
-      <!-- Icon resembling the map pin from the image -->
-      <div class="auth-icon">
-        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-      </div>
-      
-      <h1 id="auth-title">Let's sign you in.</h1>
-      <p class="subtitle" id="auth-subtitle">Sign in with your data that you have entered during your registration.</p>
-      
-      <div class="auth-error" id="auth-error"></div>
-
-      <div class="form-group">
-        <label>Email</label>
-        <input type="email" class="input-minimal" id="auth-email" placeholder="username@example.com" />
-      </div>
-      
-      <div class="form-group">
-        <label>Password</label>
-        <a href="#" class="forgot-pass" id="forgot-pass-link">Forget password?</a>
-        <input type="password" class="input-minimal" id="auth-password" placeholder="••••••••" />
+  <div class="auth-wrapper" id="auth-screen">
+    <div class="auth-container">
+      <div class="auth-visual">
+        <h2>Welcome to <br />SNIP</h2>
+        <p>Shorten, manage, and track your links with elegance.</p>
       </div>
 
-      <div class="auth-actions">
-        <button class="btn btn-primary" id="auth-submit-btn" onclick="handleAuth()">Sign in</button>
-        
-        <button class="btn btn-outline">
-          <!-- Generic G icon for 'Sign in with Google' style -->
-          <svg class="auth-google-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z"/>
+      <div class="auth-form-box">
+        <!-- Icon resembling the map pin from the image -->
+        <div class="auth-icon">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
           </svg>
-          Sign in with Google
-        </button>
-      </div>
-      
-      <div class="auth-footer">
-        <span id="auth-switch-text">Don't have an account?</span> 
-        <a onclick="toggleAuthMode()" id="auth-switch-link">Register</a>
+        </div>
+
+        <h1 id="auth-title">Let's sign you in.</h1>
+        <p class="subtitle" id="auth-subtitle">Sign in with your data that you have entered during your registration.
+        </p>
+
+        <div class="auth-error" id="auth-error"></div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" class="input-minimal" id="auth-email" placeholder="username@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <a href="#" class="forgot-pass" id="forgot-pass-link">Forget password?</a>
+          <input type="password" class="input-minimal" id="auth-password" placeholder="••••••••" />
+        </div>
+
+        <div class="auth-actions">
+          <button class="btn btn-primary" id="auth-submit-btn" onclick="handleAuth()">Sign in</button>
+
+          <button class="btn btn-outline">
+            <!-- Generic G icon for 'Sign in with Google' style -->
+            <svg class="auth-google-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M21.35 11.1h-9.17v2.73h6.51c-.33 3.81-3.5 5.44-6.5 5.44C8.36 19.27 5 16.25 5 12c0-4.1 3.2-7.27 7.2-7.27 3.09 0 4.9 1.97 4.9 1.97L19 4.72S16.56 2 12.1 2C6.42 2 2.03 6.8 2.03 12c0 5.05 4.13 10 10.22 10 5.35 0 9.25-3.67 9.25-9.09 0-1.15-.15-1.81-.15-1.81z" />
+            </svg>
+            Sign in with Google
+          </button>
+        </div>
+
+        <div class="auth-footer">
+          <span id="auth-switch-text">Don't have an account?</span>
+          <a onclick="toggleAuthMode()" id="auth-switch-link">Register</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div id="dashboard" class="hidden">
-  
-  <header class="dashboard-header">
-    <div class="dash-logo">
-      <div class="icon">
-        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
-      </div>
-      SNIP
-    </div>
-    <div class="dash-user">
-      <span id="user-email-display"></span>
-      <button class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="logout()">Sign out</button>
-    </div>
-  </header>
+  <div id="dashboard" class="hidden">
 
-  <main>
-    <!-- Stats Row -->
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="icon-bg"></div>
-        <span class="stat-title">Total Short Links</span>
-        <span class="stat-value" id="stat-links">0</span>
-      </div>
-      <div class="stat-card">
-        <div class="icon-bg"></div>
-        <span class="stat-title">Total Engagements</span>
-        <span class="stat-value" id="stat-clicks">0</span>
-      </div>
-      <div class="stat-card">
-        <div class="icon-bg"></div>
-        <span class="stat-title">Active Campaigns</span>
-        <span class="stat-value" id="stat-active">0</span>
-      </div>
-    </div>
-
-    <!-- Create Link Card -->
-    <div class="creator-card">
-      <div class="creator-header">
-        <h3>Create New Link</h3>
-      </div>
-      <div class="creator-inputs">
-        <div class="form-group" style="margin:0;">
-          <label>Destination URL</label>
-          <input type="text" class="input-minimal" id="url-input" placeholder="https://example.com/your-long-url" />
+    <header class="dashboard-header">
+      <div class="dash-logo">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+          </svg>
         </div>
-        <div class="form-group" style="margin:0;">
-          <label>Custom Alias (Optional)</label>
-          <input type="text" class="input-minimal" id="custom-code" placeholder="my-campaign" />
-        </div>
-        <button class="btn btn-primary" id="shorten-btn" onclick="shortenUrl()">Generate Link</button>
+        SNIP
       </div>
-      
-      <!-- Result Presentation -->
-      <div class="result-box" id="result-box">
-        <div>
-          <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Your shortened link:</span>
-          <span class="result-url" id="result-url"></span>
-        </div>
-        <button class="btn btn-outline" style="background:#FFF;" onclick="copyResult()">Copy</button>
+      <div class="dash-user">
+        <span id="user-email-display"></span>
+        <button class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.8rem;" onclick="logout()">Sign
+          out</button>
       </div>
-    </div>
+    </header>
 
-    <!-- Links Table -->
-    <div class="table-container">
-      <div class="table-header-row">
-        <h3>Recent Links</h3>
-        <div class="search-wrap">
-          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-          <input type="text" class="search-input" placeholder="Search aliases..." oninput="debounceSearch(this.value)" />
+    <main>
+      <!-- Stats Row -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="icon-bg"></div>
+          <span class="stat-title">Total Short Links</span>
+          <span class="stat-value" id="stat-links">0</span>
+        </div>
+        <div class="stat-card">
+          <div class="icon-bg"></div>
+          <span class="stat-title">Total Engagements</span>
+          <span class="stat-value" id="stat-clicks">0</span>
+        </div>
+        <div class="stat-card">
+          <div class="icon-bg"></div>
+          <span class="stat-title">Active Campaigns</span>
+          <span class="stat-value" id="stat-active">0</span>
         </div>
       </div>
-      <div style="overflow-x: auto;">
-        <table>
-          <thead>
-            <tr>
-              <th>Short Link</th>
-              <th>Clicks</th>
-              <th>Created On</th>
-              <th>Status</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="urls-tbody">
-            <!-- Rendered via JS -->
-          </tbody>
-        </table>
+
+      <!-- Create Link Card -->
+      <div class="creator-card">
+        <div class="creator-header">
+          <h3>Create New Link</h3>
+        </div>
+        <div class="creator-inputs">
+          <div class="form-group" style="margin:0;">
+            <label>Destination URL</label>
+            <input type="text" class="input-minimal" id="url-input" placeholder="https://example.com/your-long-url" />
+          </div>
+          <div class="form-group" style="margin:0;">
+            <label>Custom Alias (Optional)</label>
+            <input type="text" class="input-minimal" id="custom-code" placeholder="my-campaign" />
+          </div>
+          <button class="btn btn-primary" id="shorten-btn" onclick="shortenUrl()">Generate Link</button>
+        </div>
+
+        <!-- Result Presentation -->
+        <div class="result-box" id="result-box">
+          <div>
+            <span style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Your
+              shortened link:</span>
+            <span class="result-url" id="result-url"></span>
+          </div>
+          <button class="btn btn-outline" style="background:#FFF;" onclick="copyResult()">Copy</button>
+        </div>
       </div>
-    </div>
 
-  </main>
-</div>
+      <!-- Links Table -->
+      <div class="table-container">
+        <div class="table-header-row">
+          <h3>Recent Links</h3>
+          <div class="search-wrap">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            </svg>
+            <input type="text" class="search-input" placeholder="Search aliases..."
+              oninput="debounceSearch(this.value)" />
+          </div>
+        </div>
+        <div style="overflow-x: auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Short Link</th>
+                <th>Clicks</th>
+                <th>Created On</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="urls-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-<div class="toast" id="toast">Message</div>
+    </main>
+  </div>
 
-<script>
-  const API = '/api';
-  let searchQuery = '', searchTimer, lastResult = '';
-  let authMode = 'login';
-  let currentPage = 1;
+  <div class="toast" id="toast">Message</div>
 
-  // --- UTILS ---
-  function formatNumber(n) {
-    const num = parseInt(n) || 0;
-    if (num >= 1000000) return (num/1000000).toFixed(1) + 'M';
-    if (num >= 1000) return (num/1000).toFixed(1) + 'K';
-    return String(num);
-  }
+  <script>
+    const API = 'https://url-shortener-46b7.onrender.com';
+    let searchQuery = '', searchTimer, lastResult = '';
+    let authMode = 'login';
+    let currentPage = 1;
 
-  function showToast(msg, type = '') {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.className = `toast show ${type}`;
-    setTimeout(() => t.className = 'toast', 3000);
-  }
-
-  // --- JWT HELPERS ---
-  function getToken() { return localStorage.getItem('snip_token'); }
-  function getUserEmail() { return localStorage.getItem('snip_email'); }
-
-  // Wrapper: attaches JWT to every request, auto-logout on 401
-  async function authFetch(url, options = {}) {
-    const res = await fetch(url, {
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${getToken()}`,
-        ...(options.headers || {}),
-      },
-    });
-    if (res.status === 401) { logout(); throw new Error('Session expired'); }
-    return res;
-  }
-
-  // --- AUTHENTICATION ---
-  function toggleAuthMode() {
-    authMode = authMode === 'login' ? 'register' : 'login';
-    const isLogin = authMode === 'login';
-    document.getElementById('auth-title').textContent = isLogin ? "Let's sign you in." : "Create an account.";
-    document.getElementById('auth-subtitle').textContent = isLogin ? "Sign in with your data that you have entered during your registration." : "Join SNIP to manage and track your links.";
-    document.getElementById('auth-submit-btn').textContent = isLogin ? "Sign in" : "Sign up";
-    document.getElementById('auth-switch-text').textContent = isLogin ? "Don't have an account?" : "Already have an account?";
-    document.getElementById('auth-switch-link').textContent = isLogin ? "Register" : "Sign in";
-    document.getElementById('forgot-pass-link').style.display = isLogin ? "block" : "none";
-    document.getElementById('auth-error').classList.remove('show');
-  }
-
-  async function handleAuth() {
-    const email = document.getElementById('auth-email').value.trim();
-    const password = document.getElementById('auth-password').value;
-    const errBox = document.getElementById('auth-error');
-    errBox.classList.remove('show');
-
-    if (!email || !password) {
-      errBox.textContent = 'Please enter both email and password.';
-      errBox.classList.add('show');
-      return;
+    // --- UTILS ---
+    function formatNumber(n) {
+      const num = parseInt(n) || 0;
+      if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+      if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+      return String(num);
     }
 
-    const btn = document.getElementById('auth-submit-btn');
-    btn.disabled = true;
-    btn.textContent = 'Please wait...';
+    function showToast(msg, type = '') {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.className = `toast show ${type}`;
+      setTimeout(() => t.className = 'toast', 3000);
+    }
 
-    try {
-      const res = await fetch(`${API}/auth/${authMode}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+    // --- JWT HELPERS ---
+    function getToken() { return localStorage.getItem('snip_token'); }
+    function getUserEmail() { return localStorage.getItem('snip_email'); }
+
+    // Wrapper: attaches JWT to every request, auto-logout on 401
+    async function authFetch(url, options = {}) {
+      const res = await fetch(url, {
+        ...options,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${getToken()}`,
+          ...(options.headers || {}),
+        },
       });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Something went wrong');
-
-      // Store JWT token
-      localStorage.setItem('snip_token', data.token);
-      localStorage.setItem('snip_email', data.user.email);
-      initDashboard();
-    } catch (err) {
-      errBox.textContent = err.message;
-      errBox.classList.add('show');
-    } finally {
-      btn.disabled = false;
-      btn.textContent = authMode === 'login' ? 'Sign in' : 'Sign up';
+      if (res.status === 401) { logout(); throw new Error('Session expired'); }
+      return res;
     }
-  }
 
-  function logout() {
-    localStorage.removeItem('snip_token');
-    localStorage.removeItem('snip_email');
-    location.reload();
-  }
-
-  // --- DASHBOARD INIT ---
-  function initDashboard() {
-    document.getElementById('auth-screen').classList.add('hidden');
-    document.getElementById('dashboard').classList.remove('hidden');
-    document.getElementById('user-email-display').textContent = getUserEmail();
-    fetchStats();
-    fetchUrls();
-  }
-
-  // --- STATS ---
-  async function fetchStats() {
-    try {
-      const res = await authFetch(`${API}/analytics/summary`);
-      const data = await res.json();
-      const s = data.summary;
-      document.getElementById('stat-links').textContent = formatNumber(s.total_urls);
-      document.getElementById('stat-clicks').textContent = formatNumber(s.total_clicks);
-      document.getElementById('stat-active').textContent = formatNumber(s.total_urls);
-    } catch (e) { console.error(e); }
-  }
-
-  // --- FETCH & RENDER URLS ---
-  async function fetchUrls() {
-    const params = new URLSearchParams({ page: currentPage, limit: 20 });
-    if (searchQuery) params.set('search', searchQuery);
-    try {
-      const res = await authFetch(`${API}/urls?${params}`);
-      const data = await res.json();
-      renderTable(data.urls);
-    } catch (e) {
-      document.getElementById('urls-tbody').innerHTML =
-        '<tr><td colspan="5" style="text-align:center;padding:3rem;color:var(--text-muted)">Failed to load links.</td></tr>';
+    // --- AUTHENTICATION ---
+    function toggleAuthMode() {
+      authMode = authMode === 'login' ? 'register' : 'login';
+      const isLogin = authMode === 'login';
+      document.getElementById('auth-title').textContent = isLogin ? "Let's sign you in." : "Create an account.";
+      document.getElementById('auth-subtitle').textContent = isLogin ? "Sign in with your data that you have entered during your registration." : "Join SNIP to manage and track your links.";
+      document.getElementById('auth-submit-btn').textContent = isLogin ? "Sign in" : "Sign up";
+      document.getElementById('auth-switch-text').textContent = isLogin ? "Don't have an account?" : "Already have an account?";
+      document.getElementById('auth-switch-link').textContent = isLogin ? "Register" : "Sign in";
+      document.getElementById('forgot-pass-link').style.display = isLogin ? "block" : "none";
+      document.getElementById('auth-error').classList.remove('show');
     }
-  }
 
-  function renderTable(urls) {
-    const tbody = document.getElementById('urls-tbody');
-    if (!urls?.length) {
-      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:3rem;color:var(--text-muted)">No links yet. Create your first one above!</td></tr>';
-      return;
+    async function handleAuth() {
+      const email = document.getElementById('auth-email').value.trim();
+      const password = document.getElementById('auth-password').value;
+      const errBox = document.getElementById('auth-error');
+      errBox.classList.remove('show');
+
+      if (!email || !password) {
+        errBox.textContent = 'Please enter both email and password.';
+        errBox.classList.add('show');
+        return;
+      }
+
+      const btn = document.getElementById('auth-submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Please wait...';
+
+      try {
+        const res = await fetch(`${API}/auth/${authMode}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Something went wrong');
+
+        // Store JWT token
+        localStorage.setItem('snip_token', data.token);
+        localStorage.setItem('snip_email', data.user.email);
+        initDashboard();
+      } catch (err) {
+        errBox.textContent = err.message;
+        errBox.classList.add('show');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = authMode === 'login' ? 'Sign in' : 'Sign up';
+      }
     }
-    tbody.innerHTML = urls.map(u => {
-      const date = new Date(u.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      const expired = u.expires_at && new Date(u.expires_at) < new Date();
-      const badge = (!expired && u.is_active)
-        ? '<span class="badge badge-active">Active</span>'
-        : '<span class="badge badge-expired">Inactive</span>';
-      return `
+
+    function logout() {
+      localStorage.removeItem('snip_token');
+      localStorage.removeItem('snip_email');
+      location.reload();
+    }
+
+    // --- DASHBOARD INIT ---
+    function initDashboard() {
+      document.getElementById('auth-screen').classList.add('hidden');
+      document.getElementById('dashboard').classList.remove('hidden');
+      document.getElementById('user-email-display').textContent = getUserEmail();
+      fetchStats();
+      fetchUrls();
+    }
+
+    // --- STATS ---
+    async function fetchStats() {
+      try {
+        const res = await authFetch(`${API}/analytics/summary`);
+        const data = await res.json();
+        const s = data.summary;
+        document.getElementById('stat-links').textContent = formatNumber(s.total_urls);
+        document.getElementById('stat-clicks').textContent = formatNumber(s.total_clicks);
+        document.getElementById('stat-active').textContent = formatNumber(s.total_urls);
+      } catch (e) { console.error(e); }
+    }
+
+    // --- FETCH & RENDER URLS ---
+    async function fetchUrls() {
+      const params = new URLSearchParams({ page: currentPage, limit: 20 });
+      if (searchQuery) params.set('search', searchQuery);
+      try {
+        const res = await authFetch(`${API}/urls?${params}`);
+        const data = await res.json();
+        renderTable(data.urls);
+      } catch (e) {
+        document.getElementById('urls-tbody').innerHTML =
+          '<tr><td colspan="5" style="text-align:center;padding:3rem;color:var(--text-muted)">Failed to load links.</td></tr>';
+      }
+    }
+
+    function renderTable(urls) {
+      const tbody = document.getElementById('urls-tbody');
+      if (!urls?.length) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:3rem;color:var(--text-muted)">No links yet. Create your first one above!</td></tr>';
+        return;
+      }
+      tbody.innerHTML = urls.map(u => {
+        const date = new Date(u.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const expired = u.expires_at && new Date(u.expires_at) < new Date();
+        const badge = (!expired && u.is_active)
+          ? '<span class="badge badge-active">Active</span>'
+          : '<span class="badge badge-expired">Inactive</span>';
+        return `
         <tr>
           <td>
             <a href="/${u.short_code}" target="_blank" class="link-alias">${location.host}/${u.short_code}</a>
@@ -816,85 +983,86 @@
             <button class="btn btn-danger" style="padding:0.35rem 0.75rem;font-size:0.75rem;" onclick="deleteLink('${u.short_code}')">Remove</button>
           </td>
         </tr>`;
-    }).join('');
-  }
-
-  // --- LINK MANAGEMENT ---
-  async function shortenUrl() {
-    const url = document.getElementById('url-input').value.trim();
-    const alias = document.getElementById('custom-code').value.trim();
-    if (!url) { showToast('Please provide a destination URL', 'error'); return; }
-
-    const btn = document.getElementById('shorten-btn');
-    btn.disabled = true;
-    btn.textContent = 'Processing...';
-
-    try {
-      const res = await authFetch(`${API}/urls`, {
-        method: 'POST',
-        body: JSON.stringify({ url, custom_code: alias || undefined }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error);
-
-      lastResult = `${location.origin}/${data.short_code}`;
-      document.getElementById('result-url').textContent = lastResult;
-      document.getElementById('result-box').classList.add('show');
-
-      document.getElementById('url-input').value = '';
-      document.getElementById('custom-code').value = '';
-
-      showToast('Link created successfully!', 'success');
-      fetchStats();
-      fetchUrls();
-    } catch (err) {
-      showToast(err.message || 'Failed to create link', 'error');
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Generate Link';
+      }).join('');
     }
-  }
 
-  async function deleteLink(code) {
-    if (!confirm(`Are you sure you want to remove /${code}?`)) return;
-    try {
-      const res = await authFetch(`${API}/urls/${code}`, { method: 'DELETE' });
-      if (!res.ok) throw new Error('Failed');
-      showToast(`Link /${code} removed`, 'success');
-      fetchStats();
-      fetchUrls();
-    } catch { showToast('Failed to remove link', 'error'); }
-  }
+    // --- LINK MANAGEMENT ---
+    async function shortenUrl() {
+      const url = document.getElementById('url-input').value.trim();
+      const alias = document.getElementById('custom-code').value.trim();
+      if (!url) { showToast('Please provide a destination URL', 'error'); return; }
 
-  function copyResult() {
-    navigator.clipboard.writeText(lastResult)
-      .then(() => showToast('Copied to clipboard!', 'success'))
-      .catch(() => showToast('Failed to copy', 'error'));
-  }
+      const btn = document.getElementById('shorten-btn');
+      btn.disabled = true;
+      btn.textContent = 'Processing...';
 
-  // --- SEARCH ---
-  function debounceSearch(val) {
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => {
-      searchQuery = val.toLowerCase();
-      currentPage = 1;
-      fetchUrls();
-    }, 300);
-  }
+      try {
+        const res = await authFetch(`${API}/urls`, {
+          method: 'POST',
+          body: JSON.stringify({ url, custom_code: alias || undefined }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error);
 
-  // --- EVENT LISTENERS ---
-  document.getElementById('url-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') shortenUrl(); });
-  document.getElementById('auth-password').addEventListener('keydown', (e) => { if (e.key === 'Enter') handleAuth(); });
+        lastResult = `${location.origin}/${data.short_code}`;
+        document.getElementById('result-url').textContent = lastResult;
+        document.getElementById('result-box').classList.add('show');
 
-  // --- BOOTSTRAP ---
-  // If token exists, go straight to dashboard
-  if (getToken()) {
-    initDashboard();
-  }
+        document.getElementById('url-input').value = '';
+        document.getElementById('custom-code').value = '';
 
-  // Auto-refresh stats every 30s
-  setInterval(() => { if (getToken()) { fetchStats(); fetchUrls(); } }, 30000);
-</script>
+        showToast('Link created successfully!', 'success');
+        fetchStats();
+        fetchUrls();
+      } catch (err) {
+        showToast(err.message || 'Failed to create link', 'error');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Generate Link';
+      }
+    }
+
+    async function deleteLink(code) {
+      if (!confirm(`Are you sure you want to remove /${code}?`)) return;
+      try {
+        const res = await authFetch(`${API}/urls/${code}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error('Failed');
+        showToast(`Link /${code} removed`, 'success');
+        fetchStats();
+        fetchUrls();
+      } catch { showToast('Failed to remove link', 'error'); }
+    }
+
+    function copyResult() {
+      navigator.clipboard.writeText(lastResult)
+        .then(() => showToast('Copied to clipboard!', 'success'))
+        .catch(() => showToast('Failed to copy', 'error'));
+    }
+
+    // --- SEARCH ---
+    function debounceSearch(val) {
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(() => {
+        searchQuery = val.toLowerCase();
+        currentPage = 1;
+        fetchUrls();
+      }, 300);
+    }
+
+    // --- EVENT LISTENERS ---
+    document.getElementById('url-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') shortenUrl(); });
+    document.getElementById('auth-password').addEventListener('keydown', (e) => { if (e.key === 'Enter') handleAuth(); });
+
+    // --- BOOTSTRAP ---
+    // If token exists, go straight to dashboard
+    if (getToken()) {
+      initDashboard();
+    }
+
+    // Auto-refresh stats every 30s
+    setInterval(() => { if (getToken()) { fetchStats(); fetchUrls(); } }, 30000);
+  </script>
 
 </body>
+
 </html>
