@@ -1,9 +1,10 @@
 import Redis from "ioredis";
 
-const redis = new Redis(process.env.REDIS_URL || "redis://redis:6379", {
+const redis = new Redis(process.env.REDIS_URL || 'redis://redis:6379', {
     maxRetriesPerRequest: 3,
     retryStrategy: (times) => Math.min(times * 50, 2000),
-})
+    tls: process.env.REDIS_URL?.startsWith('rediss://') ? {} : undefined,
+});
 
 redis.on("error", (err) => console.error("Redis error:", err.message))
 redis.on("connect", () => console.log("Redis connected"))
