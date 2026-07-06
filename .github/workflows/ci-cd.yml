@@ -1,0 +1,133 @@
+# Save this file to: .github/workflows/ci-cd.yml
+# (create the .github/workflows/ folder at the ROOT of your repo if it doesn't exist)
+
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Avoid two workflow runs fighting over the same deploy
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ---------------------------------------------------------
+  # DETECT WHICH PART OF THE MONOREPO CHANGED
+  # This means: touch only the frontend -> only frontend job runs.
+  # Saves CI minutes and makes pipeline runs faster/clearer.
+  # ---------------------------------------------------------
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      backend: ${{ steps.filter.outputs.backend }}
+      frontend: ${{ steps.filter.outputs.frontend }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            backend:
+              - 'server/**'
+            frontend:
+              - 'client/**'
+
+  # ---------------------------------------------------------
+  # BACKEND: lint -> build -> (test slot for later) -> docker build
+  # ---------------------------------------------------------
+  backend-ci:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.backend == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: server/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      # No tests yet — this step is a placeholder.
+      # Once you add tests, remove --if-present and this becomes a real gate.
+      - name: Run tests (placeholder)
+        run: npm test --if-present
+
+      - name: Build Docker image (validate it builds, don't push yet)
+        run: docker build -t url-shortener-api:${{ github.sha }} .
+
+  # ---------------------------------------------------------
+  # FRONTEND: lint -> build
+  # ---------------------------------------------------------
+  frontend-ci:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.frontend == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: client/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Build
+        run: npm run build
+        env:
+          # Add any VITE_ env vars your build needs here, pulled from secrets
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+
+  # ---------------------------------------------------------
+  # DEPLOY BACKEND to Render — only on push to main, only if backend CI passed
+  # ---------------------------------------------------------
+  deploy-backend:
+    needs: [detect-changes, backend-ci]
+    if: |
+      github.ref == 'refs/heads/main' &&
+      github.event_name == 'push' &&
+      needs.detect-changes.outputs.backend == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render deploy
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+
+  # ---------------------------------------------------------
+  # DEPLOY FRONTEND to Vercel — only on push to main, only if frontend CI passed
+  # ---------------------------------------------------------
+  deploy-frontend:
+    needs: [detect-changes, frontend-ci]
+    if: |
+      github.ref == 'refs/heads/main' &&
+      github.event_name == 'push' &&
+      needs.detect-changes.outputs.frontend == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel deploy
+        run: |
+          curl -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}"
