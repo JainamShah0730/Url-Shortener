@@ -84,9 +84,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_API_URL: ${{ secrets.VITE_API_URL }}
-
-  deploy-backend:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}  deploy-backend:
     needs: [detect-changes, backend-ci]
     if: |
       github.ref == 'refs/heads/main' &&
