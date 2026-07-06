@@ -1,6 +1,3 @@
-# Save this file to: .github/workflows/ci-cd.yml
-# (create the .github/workflows/ folder at the ROOT of your repo if it doesn't exist)
-
 name: CI/CD Pipeline
 
 on:
@@ -9,23 +6,17 @@ on:
   pull_request:
     branches: [main]
 
-# Avoid two workflow runs fighting over the same deploy
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  # ---------------------------------------------------------
-  # DETECT WHICH PART OF THE MONOREPO CHANGED
-  # This means: touch only the frontend -> only frontend job runs.
-  # Saves CI minutes and makes pipeline runs faster/clearer.
-  # ---------------------------------------------------------
   detect-changes:
     runs-on: ubuntu-latest
     outputs:
       backend: ${{ steps.filter.outputs.backend }}
       frontend: ${{ steps.filter.outputs.frontend }}
-   steps:
+    steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
@@ -38,9 +29,6 @@ jobs:
             frontend:
               - 'frontend/**'
 
-  # ---------------------------------------------------------
-  # BACKEND: lint -> build -> (test slot for later) -> docker build
-  # ---------------------------------------------------------
   backend-ci:
     needs: detect-changes
     if: needs.detect-changes.outputs.backend == 'true'
@@ -64,17 +52,12 @@ jobs:
       - name: Lint
         run: npm run lint --if-present
 
-      # No tests yet — this step is a placeholder.
-      # Once you add tests, remove --if-present and this becomes a real gate.
       - name: Run tests (placeholder)
         run: npm test --if-present
 
-      - name: Build Docker image (validate it builds, don't push yet)
+      - name: Build Docker image
         run: docker build -t url-shortener-api:${{ github.sha }} .
 
-  # ---------------------------------------------------------
-  # FRONTEND: lint -> build
-  # ---------------------------------------------------------
   frontend-ci:
     needs: detect-changes
     if: needs.detect-changes.outputs.frontend == 'true'
@@ -101,12 +84,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # Add any VITE_ env vars your build needs here, pulled from secrets
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
-  # ---------------------------------------------------------
-  # DEPLOY BACKEND to Render — only on push to main, only if backend CI passed
-  # ---------------------------------------------------------
   deploy-backend:
     needs: [detect-changes, backend-ci]
     if: |
@@ -119,9 +98,6 @@ jobs:
         run: |
           curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
 
-  # ---------------------------------------------------------
-  # DEPLOY FRONTEND to Vercel — only on push to main, only if frontend CI passed
-  # ---------------------------------------------------------
   deploy-frontend:
     needs: [detect-changes, frontend-ci]
     if: |
